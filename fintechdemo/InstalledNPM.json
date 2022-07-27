@@ -1,0 +1,62 @@
+// https://reactnavigation.org/docs/getting-started
+//React-navigation - version:6
+yarn add @react-navigation/native
+yarn add react-native-screens react-native-safe-area-context
+
+yarn add react-native-reanimated react-native-gesture-handler @react-native-community/masked-view
+
+// https://reactnavigation.org/docs/hello-react-navigation
+yarn add @react-navigation/native-stack
+yarn add @react-navigation/drawer
+
+Fontawesome icon: 
+https: //github.com/oblador/react-native-vector-icons
+https: //ionicons.com/           --> add "ios-" in prefix
+https: //oblador.github.io/react-native-vector-icons/    //All Icons
+yarn add react-native-vector-icons
+npx react-native link react-native-vector-icons
+
+yarn add @react-native-community/netinfo
+npx react-native link @react-native-community/netinfo
+
+// https://github.com/react-native-community/async-storage
+yarn add @react-native-community/async-storage
+npx react-native link @react-native-community/async-storage
+
+//  https://stackoverflow.com/questions/34590369/formatting-a-date-string-in-react-native
+// https://medium.com/@andreecy/date-format-using-momentjs-locale-in-react-native-cc6dcffc85d3    
+yarn add moment
+
+//Show font in objective-c
+for (NSString *familyName in [UIFont familyNames
+]){
+    NSLog(@"Family name: %@", familyName);
+    for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName
+  ]) {
+      NSLog(@"--Font name: %@", fontName);
+  }
+}
+//**************** end ****************/
+// https://github.com/magicismight/react-native-root-siblings
+yarn add react-native-root-siblings
+
+// -------------Start snackbar--------------
+// https://github.com/cooperka/react-native-snackbar
+yarn add react-native-snackbar
+//Change number of lines
+//ioS: RNSnackBarView.m => change textLabel.numberOfLines=4
+//For Android:
+// set text line length two place in SnackbarModule.java
+// After line:115
+// TextView snackbarText = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+snackbarText.setMaxLines(4); // show multiple line
+
+// After line:150
+// TextView snackbarActionText = snackbarView.findViewById(com.google.android.material.R.id.snackbar_action);
+snackbarActionText.setMaxLines(4); // show multiple line
+// -------------End snackbar--------------
+//  https://stackoverflow.com/questions/34590369/formatting-a-date-string-in-react-native
+// https://medium.com/@andreecy/
+
+//https://github.com/DylanVann/react-native-fast-image
+yarn add react-native-fast-image
