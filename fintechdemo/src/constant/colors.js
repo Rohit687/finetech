@@ -8,18 +8,19 @@ export const colors = {
     onboardingTextBg: '#182b88',
 
     // status
-    Received: '#5dc4ad',
-    Failed: '#eb585a',
-    Sent: '#efaf52',
+    received: '#5dc4ad',
+    failed: '#eb585a',
+    sent: '#efaf52',
 
     menuBg: '#222b67',
-    Menu: '#eb4566',
+    menu: '#eb4566',
 
     // Text
-    Primary: '#ffffff',
-    Secondary: '#474f86',
+    primary: '#ffffff',
+    secondary: '#474f86',
     tertiary: '#4a6ed5',
-    ListTitle: '#4f599a',
+    onboardingText:'#020c40',
+    listTitle: '#4f599a',
     searchText: '#5ec374',
 
     bezierLine: '#4f599a',

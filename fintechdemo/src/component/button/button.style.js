@@ -1,24 +1,23 @@
 import { StyleSheet } from 'react-native';
+import { commonStyle } from '../../config';
+import { colors, interFontFamily } from '../../constant';
 
 export default StyleSheet.create({
     continueContainer: {
-        // width: '100%',
-        // height: 50,
-        // borderRadius: 50 / 2,
-        // backgroundColor: colors.grayButton,
-
-        // overflow: 'hidden',
-        // marginTop: 25,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // flexDirection: 'row',
-        // opacity: 0.9,
-        // // paddingHorizontal: commonStyle.viewInnerPaddingHorizontal
+        height: 50,
+        paddingHorizontal: commonStyle.paddingInner,
+        borderRadius: commonStyle.buttonBorder,
+        backgroundColor: colors.primaryButton,
+        overflow: 'hidden',
+        marginTop: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
     },
     continueTextStyle: {
-        // textAlign: 'center',
-        // // flex:1,
-        // color: colors.kWhite,
-        // ...commonStyle.fonts.medium20
+        textAlign: 'center',
+        color: colors.kWhite,
+        ...commonStyle.fonts.bold16
+
     },
 });

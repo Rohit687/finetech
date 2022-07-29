@@ -15,9 +15,9 @@ export const PageControl = (props) => {
                             backgroundColor: props.selectedIndex == i ? props.selectedColor :
                                 (props.unselectedColor ? props.unselectedColor : colors.kTransparent),
                         },
-                        // props.selectedIndex == i && {
-                        //     width: 30
-                        // },
+                        props.selectedIndex == i && {
+                            width: 35
+                        },
                             , props.controllerStyle]} />
                 )}
         </View>

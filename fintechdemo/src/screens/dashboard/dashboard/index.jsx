@@ -1,9 +1,6 @@
-import { useFocusEffect } from '@react-navigation/native';
 import React, { } from 'react';
 import { View } from 'react-native';
 import { commonStyle } from '../../../config/commonStyle';
-import { changeAndroidBottomNavigationColor, changeAndroidStatusColor } from '../../../config/NativeBridge';
-import { colors } from '../../../constant/colors';
 import styles from './dashboard.style';
 
 function DashboardView() {
@@ -14,10 +11,6 @@ function DashboardView() {
 
     // }, [])
 
-    useFocusEffect(() => {
-        changeAndroidStatusColor();
-        changeAndroidBottomNavigationColor()
-    }, [])
 
     return (
         <View style={commonStyle.commonContainer}>

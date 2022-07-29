@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { dimension } from '../../../config/commonStyle';
+import { dimension } from '@config/commonStyle';
 
 export default StyleSheet.create({
   splashImage: {

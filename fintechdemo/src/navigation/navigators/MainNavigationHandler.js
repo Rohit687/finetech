@@ -8,7 +8,7 @@ import { navigationRef } from './TopNavigatorRef';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AppConstant } from '../../constant/AppConstant';
 import { screensConst, screensNavigatorsConst } from '../../constant/screensConst';
-import { OnBoardView, Splash } from '../../screens';
+import { OnBoardView, Splash } from '@screens';
 import MenuDrawerNavigator from './MenuDrawerNavigator';
 
 const MainStack = createNativeStackNavigator();

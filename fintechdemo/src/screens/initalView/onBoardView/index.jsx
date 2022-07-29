@@ -1,95 +1,73 @@
-import React, { } from 'react';
-import { View } from 'react-native';
-import { commonStyle } from '../../../config/commonStyle';
+import React, { useRef, useState } from 'react';
+import { FlatList, Image, Text, View } from 'react-native';
+
 import styles from './onBoardView.style';
+import { onBoardList } from './onBoarding.json';
+import { getAssetByFilename, LanguageText } from '../../../resource';
+import { commonStyle, dimension } from '../../../config/commonStyle';
+import { EmptyView } from '../../../component/view/view.component';
+import { colors } from '../../../constant/colors';
+import { ContinueButton } from '../../../component/button/button.component';
+import { PageControl } from '../../../component/pageControl/pageControl.component';
 
 function OnBoardView() {
-    // const [currentIndex, setCurrentIndex] = useState(0);
-    // const flatListRef = useRef();
-    // const imageSize = dimension.aspectRatio * 170;
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const flatListRef = useRef();
+    const imageSize = dimension.aspectRatio * 170;
+
     // useEffect(() => {
 
     // }, [])
 
     return (
         <View style={commonStyle.commonContainer}>
-            {/* <TouchableOpacity activeOpacity={0.8}
-                style={styles.skipButton}
-                onPress={() => {
-                    onboardingDone().then(() => {
-                        resetInitial(screensNavigatorsConst.userModule);
-                    })
-                }}
 
-            >
-                <Text allowFontScaling={false}
-                    style={styles.skip}
-                >
-                    {LanguageText('skipTitle')}
-                </Text>
-
-            </TouchableOpacity>
             <FlatList
                 ref={flatListRef}
-                style={{
-                    width: '100%',
-                    flexGrow: 1,
-                    marginBottom:commonStyle.viewOuterPaddingHorizontal
-                }}
+                style={styles.container}
                 data={onBoardList}
                 pagingEnabled={true}
                 onScroll={(e) => setCurrentIndex(Math.round(e.nativeEvent.contentOffset.x / dimension.width))}
-                renderItem={({ item }) =>
-                    <View style={styles.listContainer}>
-                        <Text allowFontScaling={false}
-                            style={styles.listTitle}
-                        >
-                            {item.title}
-                        </Text>
-
-                        <Text allowFontScaling={false}
-                            style={styles.listDesc}
-                        >
-                            {item.desc}
-                        </Text>
-
-                        <Image
-                            style={[{
-                                width: imageSize,
-                                height: imageSize,
-                                borderRadius: imageSize / 2,
-                            }, styles.listImages]}
-                            source={getAssetByFilename(ImageSource[item.key])}
-                        />
-
-                    </View>
+                renderItem={({ item }) => <Image
+                    style={styles.listImage}
+                    source={getAssetByFilename(item.imageName)}
+                />
                 }
                 showsHorizontalScrollIndicator={false}
                 horizontal
-                keyExtractor={(item, index) => `OnBoard_${index.toString()}`}
+                keyExtractor={(_, index) => `OnBoard_${index.toString()}`}
             />
 
-            <PageControl selectedIndex={currentIndex} selectedColor={colors.pagerSelected} unselectedColor={colors.pagerUnselected} count={onBoardList.length} />
+            <View style={styles.bottomContainer}>
 
-            <ContinueFlexButton
-                style={styles.submit}
-                // textStyle={{
-                //     width: 110
-                // }}
-                title={currentIndex != (onBoardList.length - 1) ? LanguageText('nextTitle') : LanguageText('onBoard').letStart}
-                onPress={() => {
-                    if (currentIndex == onBoardList.length - 1) {
-                        onboardingDone().then(() => {
-                            resetInitial(screensNavigatorsConst.userModule);
-                        })
-                    } else {
-                        flatListRef.current.scrollToIndex({ index: currentIndex + 1, animated: true });
-                    }
-                }}
-            /> */}
+                <PageControl style={{
+                    justifyContent: 'flex-start'
+                }} selectedIndex={currentIndex} selectedColor={colors.sliderSelected} unselectedColor={colors.sliderUnselected} count={onBoardList.length} />
+                <Text allowFontScaling={false}
+                    style={styles.title}
+                >
+                    {onBoardList[currentIndex].title}
+                </Text>
+
+                <Text allowFontScaling={false}
+                    style={styles.desc}
+                >
+                    {onBoardList[currentIndex].desc}
+                </Text>
+
+                <ContinueButton
+                    style={{
+                        backgroundColor: colors.kWhite
+                    }}
+                    textStyle={{
+                        color: colors.onboardingText
+                    }}
+                    title={LanguageText('onBoard').start}
+                    onPress={() => {
+
+                    }} />
+            </View>
         </View>
-
-
     );
 }
 

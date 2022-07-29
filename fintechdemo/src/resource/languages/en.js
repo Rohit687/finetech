@@ -1,6 +1,23 @@
 //English
 export const en = {
-    hello:'Hello',
+    onBoard: {
+        start: 'Start Banking',
+        list: [
+            {
+                title: 'Transfer That Is Safe',
+                desc: 'You have nothing to be scared about, we got you covered.',
+            },
+            {
+                title: 'Transfer Money With Ease',
+                desc: 'Making money is hard enough, we make transfering it easy enough.',
+            },
+            {
+                title: 'Lorem ipsum',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            }
+        ]
+    },
+    hello: 'Hello',
     close: 'Close',
     noRecord: 'No Record Found',
     option: 'Options',

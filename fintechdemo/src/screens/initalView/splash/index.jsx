@@ -1,11 +1,12 @@
-import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import { _bootstrapAsync } from '../../../config/asyncStorage';
-import { commonStyle } from '../../../config/commonStyle';
-import { changeAndroidBottomNavigationColor } from '../../../config/NativeBridge';
-import { colors } from '../../../constant/colors';
-import { resetInitial } from '../../../navigation/navigators/TopNavigatorRef';
+import { Image, View } from 'react-native';
+import { _bootstrapAsync } from '@config/asyncStorage';
+import { commonStyle } from '@config/commonStyle';
+import { StatusBarView } from '@config/SafeAreaCustomView';
+import { colors } from '@constant/colors';
+import { statusBarValue } from '@constant/statusBar';
+import { resetInitial } from '@navigation/navigators/TopNavigatorRef';
+import { getAssetByFilename, ImageSource } from '@resource/images';
 import styles from './splash.style';
 
 function SplashView() {
@@ -18,17 +19,14 @@ function SplashView() {
         }, 2000);
     }, [])
 
-    useIsFocused(()=>{
-        changeAndroidBottomNavigationColor(colors.kWhite)
-    },[])
     return (
 
         <View style={commonStyle.commonContainer}>
-            {/* <StatusBarView androidStatusBackColor={colors.primary} barStyle={statusBarValue.white} />
+            <StatusBarView androidStatusBackColor={colors.kWhite} barStyle={statusBarValue.white} />
             <Image
                 style={styles.splashImage}
                 source={getAssetByFilename(ImageSource.splash)}
-            /> */}
+            />
 
         </View>
     );

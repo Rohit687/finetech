@@ -24,6 +24,24 @@ export const commonStyle = {
         right: 0,
     },
     fonts: {
+        bold18: {
+            fontFamily: interFontFamily.bold,
+            fontSize: 18
+        },
+        bold16: {
+            fontFamily: interFontFamily.bold,
+            fontSize: 16
+        },
+
+        regular16: {
+            fontFamily: interFontFamily.regular,
+            fontSize: 16
+        },
+        regular15: {
+            fontFamily: interFontFamily.regular,
+            fontSize: 15
+        },
+
         navigationTitle: {
             fontFamily: interFontFamily.bold,
             fontSize: 16
@@ -34,7 +52,6 @@ export const commonStyle = {
         },
     },
 
-    
     //https://ethercreative.github.io/react-native-shadow-generator/
     shadowCell: {
         shadowColor: "#000",
@@ -64,6 +81,17 @@ export const commonStyle = {
         }, //add shadow for iOS
         shadowRadius: 3, //add shadow for iOS
     },
+
+    paddingOuter: 25,
+    paddingInner: 20,
+    buttonBorder: 10,
+
+    space20: 20,
+    space15: 15,
+    space12: 12,
+    space10: 10,
+    space8: 8,
+
 };
 
 export const siblingStyle = StyleSheet.create({

@@ -6,7 +6,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { headerComponent, headerItems } from '../headerView/header.json';
 import { LanguageText } from '../../resource/languages/language';
-import { Dashboard } from '../../screens';
+import { Dashboard } from '@screens';
 import { screensConst } from '../../constant/screensConst';
 
 const MainStack = createNativeStackNavigator();
