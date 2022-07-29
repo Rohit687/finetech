@@ -3,7 +3,7 @@ export const colors = {
     navigationBg: '#020c40',
 
     primaryBg: '#020c40',
-    secondaryBG: '#020c40',
+    secondaryBG: '#10194E',
     tertiaryBg: '#1a2356',
     onboardingTextBg: '#182b88',
 
@@ -19,7 +19,7 @@ export const colors = {
     primary: '#ffffff',
     secondary: '#474f86',
     tertiary: '#4a6ed5',
-    onboardingText:'#020c40',
+    onboardingText: '#020c40',
     listTitle: '#4f599a',
     searchText: '#5ec374',
 

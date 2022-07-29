@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Image, View } from 'react-native';
-import { _bootstrapAsync } from '@config/asyncStorage';
 import { commonStyle } from '@config/commonStyle';
 import { StatusBarView } from '@config/SafeAreaCustomView';
 import { colors } from '@constant/colors';
@@ -8,6 +7,7 @@ import { statusBarValue } from '@constant/statusBar';
 import { resetInitial } from '@navigation/navigators/TopNavigatorRef';
 import { getAssetByFilename, ImageSource } from '@resource/images';
 import styles from './splash.style';
+import { _bootstrapAsync } from '../../../config';
 
 function SplashView() {
     useEffect(() => {

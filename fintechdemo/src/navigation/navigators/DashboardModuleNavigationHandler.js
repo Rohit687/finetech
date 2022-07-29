@@ -27,7 +27,9 @@ const DashboardModuleNavigationHandler = (props) => {
         name={screensConst.dashboard} component={Dashboard}
         options={({ route }) => ({
           title: `${LanguageText('hello')} Sandra,`,
-          headerTitleAlign: 'left'
+          headerTitleAlign: 'left',
+          headerLeftArr: headerItems.defaultLeftMenu,
+          headerRightArr: headerItems.addMoney
         })}
       />
 

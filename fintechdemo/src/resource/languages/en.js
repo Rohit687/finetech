@@ -17,6 +17,20 @@ export const en = {
             }
         ]
     },
+    homeScreen: {
+        currentBal: 'Your current balance is',
+        request: 'Request money',
+        send: 'Send money',
+        add: 'Add money',
+        transactions: 'All Transactions',
+        sortBy: 'Sort by:',
+        recent: 'Recent'
+    },
+    transactions: {
+        received: 'Received',
+        failed: 'Failed',
+        sent: 'Sent'
+    },
     hello: 'Hello',
     close: 'Close',
     noRecord: 'No Record Found',

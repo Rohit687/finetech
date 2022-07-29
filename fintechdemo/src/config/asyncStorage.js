@@ -26,3 +26,13 @@ export const _bootstrapAsync = () => {
     );
 }
 
+export const onboardingDone = () => {
+    return (
+        new Promise((resolve, _) => {
+            AsyncStorage.setItem(asyncStorageKeys.onBoarded, JSON.stringify(true))
+                .then(() => {
+                    resolve();
+                });
+        })
+    );
+}

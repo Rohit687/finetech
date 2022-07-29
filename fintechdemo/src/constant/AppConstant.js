@@ -5,6 +5,8 @@ import { colors } from './colors';
 
 class AppConstant {
 
+  static currencySymbol = '₦';
+
   static statusData = {
     top: 1,
     bottom: 0,
@@ -145,7 +147,7 @@ class AppConstant {
     }
   }
 
-  
+
 
   static recentlyPlaySongs = [];
   static getRecentlyPlaySongs() {

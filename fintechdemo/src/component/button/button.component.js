@@ -9,6 +9,7 @@ export const ContinueButton = (props) => {
             activeOpacity={(props.isDisabled == null || !props.isDisabled) ? 0.6 : 1}
             style={[
                 styles.continueContainer,
+                props.secondary && styles.continueSecondaryContainer,
                 props.style
             ]}
             onPress={() => {
@@ -17,14 +18,15 @@ export const ContinueButton = (props) => {
                 }
             }}
         >
-        
+
             <Text
                 ellipsizeMode='tail'
                 allowFontScaling={false}
                 style={[
                     styles.continueTextStyle,
+                    props.secondary && styles.continueSecondaryText,
                     props.textStyle,
-                    
+
                 ]}>
                 {props.title}
             </Text>

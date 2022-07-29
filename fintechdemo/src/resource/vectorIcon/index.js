@@ -11,70 +11,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Foundation from 'react-native-vector-icons/Foundation';
 
 export const iconConstant = {
-    ioniconsIconsHome: 'ios-home',
-    fontAwesome5Profile: 'user-alt',
-    materialCommunityIconsChef: 'chef-hat',
-    materialIconsCuisines: 'room-service',
-    materialIconsDish: 'restaurant',
-
+    featherMenu: 'menu',
     ioniconsBack: 'chevron-back',
     ioniconsDown: 'chevron-down',
     ioniconsUp: 'chevron-up',
     ioniconsRight: 'chevron-forward',
-    ioniconsKey: 'key-outline',
 
-    antDesignMobile: 'mobile1',
-    materialIconsPass: 'lock',
-
-    entypoIconsOpenEye: 'eye',
-    entypoIconsCloseEye: 'eye-with-line',
-
-    materialCommunityIconsPrivacyCheck: 'checkbox-marked-outline',
-    materialCommunityIconsPrivacyUncheck: 'checkbox-blank-outline',
-
-    octiconsIconsSearch: 'search',
-
-    fontAwesome5Name: 'user-alt',
-
-    fontAwesomeAddress: 'map-signs',
-
-    foundationIconsMail: 'mail',
-
-    ioniconsLocationPin: 'md-location-sharp',
-    materialIconsLocation: 'my-location',
-    materialCommunityIconsNotification: 'bell-ring',
-    fontAwesomeWhatsApp: 'whatsapp',
-    ioniconsFilter: 'options',
-    fontAwesomeRating: 'star',
-    entypoIconsHeartUnSelected: 'heart-outlined',
-    antDesignHeartSelected: 'heart',
-    entypoIconsAddCart: 'squared-plus',
-    entypoIconsRemoveCart: 'squared-minus',
-    featherCheck: 'check-square',
-    featherUnCheck: 'square',
-    entypoDotMenu: 'dots-three-vertical',
-    ioniconsRadio: 'radio-button-on',
-    ioniconsRadioUnselected: 'radio-button-off',
-    fontAwesome5Work: 'building',
-    fontAwesome5CashOnDelivery: 'hand-holding-usd',
-    ioniconsOnlinePay: 'phone-portrait-outline',
-    fontAwesome5Edit: 'edit',
-    materialIconsOrders: 'shopping-bag',
-    materialIconsPastOrders: 'history',
-    entypoIconsWallet: 'wallet',
-    entypoIconsAbout: 'info-with-circle',
-    materialCommunityIconsTermCondition: 'text-box-check',
-    ioniconsPrivacy: 'shield-checkmark',
-    materialCommunityIconsRefund: 'cash-refund',
-    entypoIconsShare: 'share',
-    antDesignIconsAdd: 'pluscircle',
-    entypoIconsArrow: 'chevron-thin-right',
-
-
-    materialCommunityIconsSort: 'sort',
-
-    materialCommunityIconsCart: 'cart-outline',
-
+    materialCommunityIconsfailed: 'account-cancel',
+    featherReceived: 'user-plus',
 };
 
 export const AllIconsType = {

@@ -7,6 +7,7 @@ import { NavigationHeaderLayout } from './headerView.component';
 export const headerButtonKey = {
   back: 'back',
   menu: 'menu',
+  addMoney: 'addMoney'
 }
 
 export const headerButtonType = {
@@ -16,17 +17,22 @@ export const headerButtonType = {
 }
 
 export const headerItems = {
-  defaultRightMenu: [
+  defaultLeftMenu: [
     {
       key: headerButtonKey.menu,
       type: headerButtonType.icon, //image, icon,text
       icon: {
-        vectorName: AllIconsType.chefIcon,
-        name: iconConstant.chefIconDrawerMenu,
-        size: 26,
-        color: colors.kBlack
+        vectorName: AllIconsType.featherIcons,
+        name: iconConstant.featherMenu,
+        size: 24,
+        color: colors.menu
+      },
+      style: {
+        backgroundColor: colors.menuBg,
+        height: 40,
+        borderRadius: 20
       }
-    }
+    },
   ],
   defaultBack: [
     {
@@ -39,6 +45,19 @@ export const headerItems = {
         color: colors.kBlack
       }
     }
+  ],
+  addMoney: [
+    {
+      key: headerButtonKey.addMoney,
+      type: headerButtonType.text, //image, icon,text
+      width: 100,
+      text: LanguageText('homeScreen').add,
+      style: {
+        backgroundColor: colors.tertiaryBg,
+        height: 40,
+        borderRadius: commonStyle.buttonBorder
+      }
+    },
   ]
 }
 

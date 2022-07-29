@@ -1,29 +1,21 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../constant';
 
 export default StyleSheet.create({
-  container: {
-    // flexGrow: 1,
-    // width: '100%',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: colors.primaryBg,
+  bezierContainer: {
+    width: '100%',
+    height: 50,
+    backgroundColor: colors.secondaryBG,
+    borderRadius: 0,
+    borderTopRightRadius: 50,
+    borderTopLeftRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  scrollContainer: {
-    // flexGrow: 1,
-    // width: '100%',
-  },
-  radioButtonView: {
-    // flexDirection: 'row',
-    // width: '100%',
-    // marginTop: 10,
-    // alignItems: 'center'
-    // // height: 20,
-    // // backgroundColor: 'cyan'
-  },
-  radioText: {
-    // flex: 1,
-    // ...commonStyle.fonts.clickLink,
-    // color: colors.privacyColor,
-    // lineHeight: 18
+  bezierView: {
+    width: 80,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.bezierLine
   }
 });

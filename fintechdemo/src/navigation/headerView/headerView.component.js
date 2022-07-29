@@ -2,13 +2,15 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from "react-native";
 import { commonStyle } from '../../config/commonStyle.js';
 import { AppConstant } from '../../constant/AppConstant.js';
+import { colors } from '../../constant/colors.js';
 import { AllIcons } from '../../resource/vectorIcon/index.js';
+import { getNavigationDrawer } from '../navigators/TopNavigatorRef.js';
 import { headerButtonKey, headerButtonType } from "./header.json.js";
 import styles from './headerView.style';
 
 export const NavigationHeaderLayout = (props) => {
   const { options } = props;
-  
+
   const itemConst = {
     height: AppConstant.getStatusData().top + AppConstant.getStatusData().headerHeight,
     contentNonHeight: AppConstant.getStatusData().top,
@@ -158,12 +160,14 @@ function NavigationHeaderButton({ options, route, itemConst, headerArr = [], isR
         // backgroundColor: 'green',
         width: item.width || itemConst.defaultWidth,
         marginRight: (index != headerArr.length - 1) ? itemConst.defaultSpace : 0,
-      }]}
+      }, item.style]}
       onPress={() => {
         if (item.key == headerButtonKey.back) {
           pop(options.backStep || 1);
         } else if (item.key == headerButtonKey.menu) {
-          getNavigationDrawerHome().openDrawer();
+          getNavigationDrawer().openDrawer();
+        } else if (item.key == headerButtonKey.addMoney) {
+
         }
       }}
     >
@@ -176,6 +180,19 @@ function NavigationHeaderButton({ options, route, itemConst, headerArr = [], isR
           color={(options.selectedKey != null && options.selectedKey == item.key) ? item.icon.selectedColor : item.icon.color}
           style={item.icon.style != null && item.icon.style}
         />
+      }
+
+      {
+        item.type == headerButtonType.text && item.key == headerButtonKey.addMoney &&
+        <Text allowFontScaling={false}
+          style={{
+            textAlign: 'center',
+            color: colors.tertiary,
+            ...commonStyle.fonts.bold14
+          }}
+        >
+          {item.text}
+        </Text>
       }
 
     </TouchableOpacity>

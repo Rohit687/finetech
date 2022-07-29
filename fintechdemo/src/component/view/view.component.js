@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React, { } from 'react';
 import { View } from 'react-native';
 import { AppConstant } from '../../constant/AppConstant';
 import styles from './view.style';
@@ -27,13 +27,10 @@ export const EmptyView = ({ height = 10, width = 0, backgroundColor = 'transpare
     }} />
 }
 
-export const ContainerView = (props) => {
+export const ViewBezier = () => {
     return (
-        <View style={[styles.container, {
-            justifyContent: 'flex-start',
-            paddingBottom: props.isBottomTab ? AppConstant.getStatusData().bottomTab : 0,
-        }, props.style]}>
-            {props.children}
+        <View style={styles.bezierContainer}>
+            <View style={styles.bezierView} />
         </View>
     )
 }

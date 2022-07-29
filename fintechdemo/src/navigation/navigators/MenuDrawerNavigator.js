@@ -7,8 +7,8 @@ import { View, Platform } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DashboardModuleNavigationHandler from './DashboardModuleNavigationHandler';
 import { setNavigationDrawer } from './TopNavigatorRef';
-import { Sidebar } from '../sidebar/sidebar';
-import { screensNavigatorsConst } from '@screens';
+import { Sidebar } from '@navigation';
+import { screensNavigatorsConst } from '@constant';
 
 const MenuDrawer = createDrawerNavigator();
 const MenuDrawerNavigator = (props) => {

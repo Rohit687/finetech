@@ -24,6 +24,10 @@ export const commonStyle = {
         right: 0,
     },
     fonts: {
+        bold30: {
+            fontSize: 30,
+            fontFamily: interFontFamily.bold
+        },
         bold18: {
             fontFamily: interFontFamily.bold,
             fontSize: 18
@@ -31,6 +35,15 @@ export const commonStyle = {
         bold16: {
             fontFamily: interFontFamily.bold,
             fontSize: 16
+        },
+        bold14: {
+            fontFamily: interFontFamily.bold,
+            fontSize: 14
+        },
+
+        semiBold15: {
+            fontFamily: interFontFamily.semiBold,
+            fontSize: 15
         },
 
         regular16: {
@@ -41,10 +54,14 @@ export const commonStyle = {
             fontFamily: interFontFamily.regular,
             fontSize: 15
         },
+        regular13: {
+            fontFamily: interFontFamily.regular,
+            fontSize: 13
+        },
 
         navigationTitle: {
             fontFamily: interFontFamily.bold,
-            fontSize: 16
+            fontSize: 18
         },
         inputFont: {
             fontSize: 16,
@@ -86,11 +103,13 @@ export const commonStyle = {
     paddingInner: 20,
     buttonBorder: 10,
 
+    space40: 40,
     space20: 20,
     space15: 15,
     space12: 12,
     space10: 10,
     space8: 8,
+    space5: 5,
 
 };
 

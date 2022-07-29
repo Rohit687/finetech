@@ -14,6 +14,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
     },
+    continueSecondaryContainer: {
+       backgroundColor:colors.kTransparent,
+       borderColor:colors.secondaryButton,
+       borderWidth:1
+    },
+    continueSecondaryText: {
+        color: colors.secondaryButton,
+     },
     continueTextStyle: {
         textAlign: 'center',
         color: colors.kWhite,
