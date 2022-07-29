@@ -1,5 +1,7 @@
 export const colors = {
 
+    navigationBg: '#020c40',
+
     primaryBg: '#020c40',
     secondaryBG: '#020c40',
     tertiaryBg: '#1a2356',
@@ -14,7 +16,7 @@ export const colors = {
     Menu: '#eb4566',
 
     // Text
-    Primary: 'white',
+    Primary: '#ffffff',
     Secondary: '#474f86',
     tertiary: '#4a6ed5',
     ListTitle: '#4f599a',

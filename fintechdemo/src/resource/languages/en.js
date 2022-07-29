@@ -1,5 +1,6 @@
 //English
 export const en = {
+    hello:'Hello',
     close: 'Close',
     noRecord: 'No Record Found',
     option: 'Options',

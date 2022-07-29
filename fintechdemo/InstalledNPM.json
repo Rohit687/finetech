@@ -5,6 +5,11 @@ yarn add react-native-screens react-native-safe-area-context
 
 yarn add react-native-reanimated react-native-gesture-handler @react-native-community/masked-view
 
+/*Error into reanimated
+Export namespace should be first transformed by @babel/plugin-proposal-export-namespace-from
+//add into babel.config.js -> plugins: ["react-native-reanimated/plugin"],
+*/
+
 // https://reactnavigation.org/docs/hello-react-navigation
 yarn add @react-navigation/native-stack
 yarn add @react-navigation/drawer
