@@ -2,7 +2,8 @@ export const screensConst = {
     splash: 'splashView',
     onboardView: 'onboardView',
     dashboard: 'dashboard',
-    newRequest: 'newRequest'
+    newRequest: 'newRequest',
+    searchPerson: 'searchPerson'
 };
 
 export const screensNavigatorsConst = {

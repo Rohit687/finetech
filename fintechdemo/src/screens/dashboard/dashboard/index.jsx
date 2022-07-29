@@ -54,7 +54,7 @@ function DashboardView() {
                         }}
                         title={LanguageText('homeScreen').request}
                         onPress={() => {
-                            push(screensConst.newRequest)
+                            push(screensConst.searchPerson)
                         }} />
 
                     <ContinueButton

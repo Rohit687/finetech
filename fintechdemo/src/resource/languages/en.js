@@ -37,6 +37,7 @@ export const en = {
         notSend: "Don't send"
     },
     hello: 'Hello',
+    continue:'Continue',
     close: 'Close',
     noRecord: 'No Record Found',
     option: 'Options',

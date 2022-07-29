@@ -8,7 +8,7 @@ import { headerComponent, headerItems } from '../headerView/header.json';
 import { LanguageText } from '../../resource/languages/language';
 import { Dashboard } from '@screens';
 import { screensConst } from '../../constant/screensConst';
-import { NewRequest } from '../../screens';
+import { NewRequest, searchPerson } from '../../screens';
 
 const MainStack = createNativeStackNavigator();
 
@@ -37,6 +37,13 @@ const DashboardModuleNavigationHandler = (props) => {
         name={screensConst.newRequest} component={NewRequest}
         options={({ route }) => ({
           title: LanguageText('newRequest').title,
+          headerLeftArr: headerItems.defaultBack
+        })}
+      />
+      <MainStack.Screen
+        name={screensConst.searchPerson} component={searchPerson}
+        options={({ route }) => ({
+          title: '',
           headerLeftArr: headerItems.defaultBack
         })}
       />
