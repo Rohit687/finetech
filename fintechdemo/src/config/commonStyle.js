@@ -66,6 +66,14 @@ export const commonStyle = {
             fontFamily: interFontFamily.regular,
             fontSize: 13
         },
+        regular11: {
+            fontFamily: interFontFamily.regular,
+            fontSize: 11
+        },
+        regular10: {
+            fontFamily: interFontFamily.regular,
+            fontSize: 10
+        },
 
         navigationTitle: {
             fontFamily: interFontFamily.bold,
