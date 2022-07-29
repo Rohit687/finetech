@@ -31,6 +31,11 @@ export const en = {
         failed: 'Failed',
         sent: 'Sent'
     },
+    newRequest: {
+        title: 'New Request',
+        reqFor: 'is requesting for:',
+        notSend: "Don't send"
+    },
     hello: 'Hello',
     close: 'Close',
     noRecord: 'No Record Found',

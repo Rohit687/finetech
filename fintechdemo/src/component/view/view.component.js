@@ -1,5 +1,6 @@
 import React, { } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { commonStyle } from '../../config';
 import { AppConstant } from '../../constant/AppConstant';
 import styles from './view.style';
 
@@ -32,5 +33,25 @@ export const ViewBezier = () => {
         <View style={styles.bezierContainer}>
             <View style={styles.bezierView} />
         </View>
+    )
+}
+
+
+export const ContainerScrollView = (props) => {
+    return (
+        <ScrollView style={{
+            width: '100%',
+            flexGrow: 1
+        }}
+            contentContainerStyle={{
+                flexGrow: 1
+            }}
+        >
+            <View style={[commonStyle.commonContainer, {
+                paddingHorizontal: commonStyle.paddingInner,
+            },props.containerStyle]}>
+                {props.children}
+            </View>
+        </ScrollView>
     )
 }

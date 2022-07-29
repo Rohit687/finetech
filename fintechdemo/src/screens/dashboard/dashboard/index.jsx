@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, SectionList } from 'react-native';
 import { ContinueButton, FastImageWithPlaceholder, ViewBezier } from '../../../component';
 import { commonStyle } from '../../../config';
-import { colors, AppConstant } from '../../../constant';
+import { colors, AppConstant, screensConst } from '../../../constant';
+import { push } from '../../../navigation/navigators/TopNavigatorRef';
 import { AllIcons, AllIconsType, getAssetByFilename, iconConstant, ImageSource, LanguageText } from '../../../resource';
 import { jsonCopy } from '../../../utils/string';
 import { allTransactions, dashboardKey, transationStatusById } from './dashboard.json';
@@ -53,7 +54,7 @@ function DashboardView() {
                         }}
                         title={LanguageText('homeScreen').request}
                         onPress={() => {
-
+                            push(screensConst.newRequest)
                         }} />
 
                     <ContinueButton

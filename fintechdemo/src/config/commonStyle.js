@@ -41,6 +41,14 @@ export const commonStyle = {
             fontSize: 14
         },
 
+        semiBold20: {
+            fontFamily: interFontFamily.semiBold,
+            fontSize: 20
+        },
+        semiBold17: {
+            fontFamily: interFontFamily.semiBold,
+            fontSize: 17
+        },
         semiBold15: {
             fontFamily: interFontFamily.semiBold,
             fontSize: 15

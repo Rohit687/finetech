@@ -42,7 +42,7 @@ export const headerItems = {
         vectorName: AllIconsType.ioniconsIcons,
         name: iconConstant.ioniconsBack,
         size: 26,
-        color: colors.kBlack
+        color: colors.kWhite
       }
     }
   ],

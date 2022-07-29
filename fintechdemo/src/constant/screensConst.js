@@ -1,7 +1,8 @@
 export const screensConst = {
     splash: 'splashView',
     onboardView: 'onboardView',
-    dashboard: 'dashboard'
+    dashboard: 'dashboard',
+    newRequest: 'newRequest'
 };
 
 export const screensNavigatorsConst = {

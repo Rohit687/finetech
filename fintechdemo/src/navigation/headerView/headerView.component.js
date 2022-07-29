@@ -4,7 +4,7 @@ import { commonStyle } from '../../config/commonStyle.js';
 import { AppConstant } from '../../constant/AppConstant.js';
 import { colors } from '../../constant/colors.js';
 import { AllIcons } from '../../resource/vectorIcon/index.js';
-import { getNavigationDrawer } from '../navigators/TopNavigatorRef.js';
+import { getNavigationDrawer, pop } from '../navigators/TopNavigatorRef.js';
 import { headerButtonKey, headerButtonType } from "./header.json.js";
 import styles from './headerView.style';
 
