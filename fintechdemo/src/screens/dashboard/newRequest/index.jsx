@@ -6,8 +6,9 @@ import { AppConstant } from '../../../constant';
 import { getAssetByFilename, ImageSource, LanguageText } from '../../../resource';
 import styles from './newRequest.style';
 
-function NewRequestView() {
+function NewRequestView({ route: { params: { item : { name, image } } = {} } }) {
 
+    AppConstant.showConsoleLog(name)
     return (
         <ContainerScrollView containerStyle={{
             paddingVertical: commonStyle.paddingInner
@@ -17,7 +18,7 @@ function NewRequestView() {
                 <FastImageWithPlaceholder
                     style={styles.userImage}
                     source={{
-                        uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80'
+                        uri: image
                     }}
                     defaultSize={{
                         width: '100%',
@@ -31,7 +32,7 @@ function NewRequestView() {
             <Text allowFontScaling={false}
                 style={styles.username}
             >
-                Adeleke Ramon
+                {name}
             </Text>
             <Text allowFontScaling={false}
                 style={styles.reqFor}

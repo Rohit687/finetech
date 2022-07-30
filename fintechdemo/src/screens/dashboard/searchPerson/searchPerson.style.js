@@ -44,13 +44,13 @@ export default StyleSheet.create({
     width: 180,
   },
 
-  searchContainer: (imageSize) => ({
+  searchContainer: (imageSize, extraHeight) => ({
     paddingVertical: commonStyle.paddingInner,
     width: imageSize,
-    height: imageSize + 40,
+    height: imageSize + (extraHeight*2),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'cyan',
+    // backgroundColor: 'cyan',
   }),
   searchCircle: (imageSize) => ({
     width: imageSize,

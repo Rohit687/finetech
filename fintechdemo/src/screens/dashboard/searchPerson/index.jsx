@@ -1,17 +1,69 @@
-import React, { useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { ContainerScrollView, ContinueButton, FastImageWithPlaceholder, ViewBezier } from '../../../component';
 import { commonStyle, dimension } from '../../../config';
-import { AppConstant, colors } from '../../../constant';
+import { AppConstant, colors, screensConst } from '../../../constant';
+import { push } from '../../../navigation/navigators/TopNavigatorRef';
 import { getAssetByFilename, ImageSource, LanguageText } from '../../../resource';
+import { jsonCopy, myRandomNonUniqueInts, myRandomUniqueInts } from '../../../utils/string';
+import { searchPerson1, searchPerson2, searchPerson3, searchPerson4, searchPerson5, searchPerson6, searchPerson7 } from './searchPerson.json';
 import styles from './searchPerson.style';
 
+const extraHeight = 20;
 const imageSize = dimension.aspectRatio * 320;
 const userImageSize = dimension.aspectRatio * 30;
 const searchUserWidth = dimension.aspectRatio * 68;
 const searchUserHeight = dimension.aspectRatio * 54;
+const oDiameter = (dimension.aspectRatio * 315) / 2; //outer
+const mDiameter = (dimension.aspectRatio * 236) / 2;
+const iDiameter = (dimension.aspectRatio * 149) / 2; //inner
 
 function SearchPersonView() {
+    const [userSearchListing, setUserSearchListing] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+
+    useEffect(() => {
+
+        let searchPersonData = jsonCopy(searchPerson1);
+        let pageNo = 0;
+        let pageSize = 12;
+
+        let totalNumberOfItems = searchPersonData.slice(pageNo * pageSize, (pageNo + 1) * pageSize);
+        let ranNum = myRandomUniqueInts(totalNumberOfItems.length, 0, pageSize - 1);
+
+        let customizeItems = [];
+        AppConstant.showConsoleLog(searchPersonData.length, totalNumberOfItems.length, ranNum);
+        totalNumberOfItems.map((item, index) => {
+
+            let angle = 0;
+            if (ranNum[index] < 4) {
+                AppConstant.showConsoleLog('hit1:', ranNum[index]);
+                angle = ranNum[index] * 90;
+            } else if (ranNum[index] < 8) {
+                AppConstant.showConsoleLog('hit2:', ranNum[index]);
+                angle = (ranNum[index] - 4) * 90;
+            } else {
+                AppConstant.showConsoleLog('hit3:', ranNum[index]);
+                angle = (ranNum[index] - 8) * 90;
+            }
+
+            AppConstant.showConsoleLog(ranNum[index], angle);
+            customizeItems.push({
+                ...item,
+                ...getPosition({
+                    diameter: (
+                        (ranNum[index] < 4 && iDiameter) ||
+                        (ranNum[index] < 8 && oDiameter) ||
+                        mDiameter
+                    ),
+                    angle: angle,
+                    extraCustomSpace: (ranNum[index] < 8 ? 45 : 0)
+                })
+            })
+        })
+
+        setUserSearchListing(jsonCopy(customizeItems));
+    }, [])
 
     function selectedUserLayout() {
         return (
@@ -21,7 +73,7 @@ function SearchPersonView() {
                     <FastImageWithPlaceholder
                         style={styles.userImage}
                         source={{
-                            uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80'
+                            uri: userSearchListing[selectedIndex].image
                         }}
                         defaultSize={{
                             width: '100%',
@@ -35,13 +87,13 @@ function SearchPersonView() {
                     <Text allowFontScaling={false}
                         style={styles.username}
                     >
-                        Adeleke Ramon
+                        {userSearchListing[selectedIndex].name}
                     </Text>
 
                     <Text allowFontScaling={false}
                         style={styles.userPhone}
                     >
-                        (+234) 234 234343
+                        {userSearchListing[selectedIndex].phone}
                     </Text>
 
                     <ContinueButton
@@ -53,58 +105,98 @@ function SearchPersonView() {
                         }}
                         title={LanguageText('continue')}
                         onPress={() => {
+                            push(screensConst.newRequest, {
+                                item: userSearchListing[selectedIndex]
+                            })
                         }} />
                 </View>
             </View>
         )
     }
 
-    function userLayout(style) {
-        return (
-            <View style={[{
-                position: 'absolute',
+    function degToRad(deg) {
+        return deg * Math.PI / 180;
+    }
+    function getPosition({ diameter, angle, extraCustomSpace = 0 }) {
+        const angleRad = degToRad(angle + extraCustomSpace);
+        const extraSpace = (dimension.aspectRatio * 0);
+        return {
+            top: (imageSize / 2) - extraSpace + extraHeight - (diameter * Math.cos(-angleRad)) - (searchUserHeight / 2) + (dimension.aspectRatio * 8),
+            left: (imageSize / 2) - extraSpace - (diameter * Math.sin(-angleRad)) - (searchUserWidth / 2)
+        }
+    }
 
-                width: searchUserWidth,
-                height: searchUserHeight,
-                alignItems: 'center',
-                // backgroundColor: 'red',
-                // opacity:0.5
-            }, style]}>
-                <FastImageWithPlaceholder
+    function userLayout(item, index) {
+
+        return (
+            <View
+                key={`userLayout_${item.id}`}
+                style={[{
+                    position: 'absolute',
+                    width: searchUserWidth * (selectedIndex == index ? 1.5 : 1),
+                    height: searchUserHeight * (selectedIndex == index ? 1.5 : 1),
+                    alignItems: 'center',
+                    left: item.left - (selectedIndex == index ? ((searchUserWidth / 2) * 0.5) : 0),
+                    top: item.top - (selectedIndex == index ? (((searchUserHeight / 2)) * 0.5) : 0),
+                }]}>
+                <TouchableOpacity
+                    activeOpacity={1}
+                    onPress={() => {
+                        if (selectedIndex == index) {
+                            setSelectedIndex(-1);
+                        } else {
+                            setSelectedIndex(index);
+                        }
+                    }}
                     style={{
-                        height: userImageSize,
-                        width: userImageSize,
-                        borderRadius: userImageSize / 2,
-                        borderWidth: 2,
-                        borderColor: colors.kWhite
-                    }}
-                    source={{
-                        uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80'
-                    }}
-                    defaultSize={{
-                        width: '100%',
-                        height: '100%'
-                    }}
-                    resizeMode={'cover'}
-                    defaultImageMode={'cover'}
-                    defaultImage={getAssetByFilename(ImageSource.profilePlaceholder)}
-                />
+                        height: userImageSize * (selectedIndex == index ? 1.5 : 1),
+                        width: userImageSize * (selectedIndex == index ? 1.5 : 1)
+                    }}>
+                    <FastImageWithPlaceholder
+                        style={{
+                            height: userImageSize * (selectedIndex == index ? 1.5 : 1),
+                            width: userImageSize * (selectedIndex == index ? 1.5 : 1),
+                            borderRadius: (userImageSize * (selectedIndex == index ? 1.5 : 1)) / 2,
+                            borderWidth: selectedIndex == index ? 3 : 2,
+                            borderColor: selectedIndex == index ? colors.searchText : colors.kWhite
+                        }}
+                        source={{
+                            uri: item.image
+                        }}
+                        defaultSize={{
+                            width: '100%',
+                            height: '100%'
+                        }}
+                        resizeMode={'cover'}
+                        defaultImageMode={'cover'}
+                        defaultImage={getAssetByFilename(ImageSource.profilePlaceholder)}
+                    />
+                </TouchableOpacity>
+
                 <Text
+                    onPress={() => {
+                        if (selectedIndex == index) {
+                            setSelectedIndex(-1);
+                        } else {
+                            setSelectedIndex(index);
+                        }
+                    }}
                     numberOfLines={1}
                     ellipsizeMode='tail'
                     allowFontScaling={false}
                     style={{
                         ...commonStyle.fonts.regular10,
-                        color: colors.kWhite,
+                        color: selectedIndex == index ? colors.searchText : colors.kWhite,
                         textAlign: 'center'
                     }}
                 >
-                    Loream Ipsum
+                    {item.name}
                 </Text>
             </View>
         )
     }
 
+    AppConstant.showConsoleLog('userSearchListing:', userSearchListing)
     return (
         <View style={{
             width: '100%',
@@ -113,92 +205,23 @@ function SearchPersonView() {
             <ContainerScrollView containerStyle={{
                 justifyContent: 'flex-start',
                 paddingHorizontal: 0,
-                paddingBottom: (dimension.height - (dimension.width + 30) - AppConstant.getStatusData().headerHeight) > 360 ? 0 : 400,
+                paddingBottom: selectedIndex != -1 ? ((dimension.height - (dimension.width + 30) - AppConstant.getStatusData().headerHeight) > 360 ? 0 : 400) : 0,
             }}>
 
-                <View style={styles.searchContainer(imageSize)}>
+                <View style={styles.searchContainer(imageSize, extraHeight)}>
                     <Image
                         style={styles.searchCircle(imageSize)}
                         source={getAssetByFilename(ImageSource.searchUserPath)}
                     />
 
-                    {/* ----- Outer start ----- */}
-                    {userLayout({   //top-left
-                        top: dimension.aspectRatio * 40,
-                        left: dimension.aspectRatio * 15,
-                    })}
-                    {userLayout({   //top-right
-                        top: dimension.aspectRatio * 40,
-                        right: dimension.aspectRatio * 15,
-                    })}
-                    {userLayout({   //bottom-left
-                        bottom: dimension.aspectRatio * 30,
-                        left: dimension.aspectRatio * 15,
-                    })}
-                    {userLayout({   //bottom-right
-                        bottom: dimension.aspectRatio * 30,
-                        right: dimension.aspectRatio * 15,
-                    })}
-                    {/* ----- Outer end ----- */}
-
-                    {/* ----- Inner start ----- */}
-                    {userLayout({   //top-left
-                        top: dimension.aspectRatio * 120,
-                        left: dimension.aspectRatio * 65,
-                    })}
-                    {userLayout({   //top-right
-                        top: dimension.aspectRatio * 120,
-                        right: dimension.aspectRatio * 65,
-                    })}
-                    {userLayout({   //bottom-left
-                        bottom: dimension.aspectRatio * 110,
-                        left: dimension.aspectRatio * 65,
-                    })}
-                    {userLayout({   //bottom-right
-                        bottom: dimension.aspectRatio * 110,
-                        right: dimension.aspectRatio * 65,
-                    })}
-                    {/* ----- Inner end ----- */}
-
-                    {/* ----- Medium start ----- */}
-                    {userLayout({   //top-center
-                        top: dimension.aspectRatio * 40,
-                        left: dimension.width / 2 - (searchUserWidth / 2),
-                    })}
-                    {userLayout({   //center-left
-                        top: ((imageSize / 2) + 20) - (searchUserHeight / 2),
-                        left: 10,
-                    })}
-                    {userLayout({   //center-right
-                        top: ((imageSize / 2) + 20) - (searchUserHeight / 2),
-                        right: 10,
-                    })}
-                    {userLayout({   //top-left
-                        top: dimension.aspectRatio * 80,
-                        left: dimension.aspectRatio * 35,
-                    })}
-                    {userLayout({   //top-right
-                        top: dimension.aspectRatio * 80,
-                        right: dimension.aspectRatio * 35,
-                    })}
-                    {userLayout({   //bottom-left
-                        bottom: dimension.aspectRatio * 70,
-                        left: dimension.aspectRatio * 40,
-                    })}
-                    {userLayout({   //bottom-right
-                        bottom: dimension.aspectRatio * 70,
-                        right: dimension.aspectRatio * 40,
-                    })}
-                    {userLayout({   //bottom-center
-                        bottom: dimension.aspectRatio * 25,
-                        left: dimension.width / 2 - (searchUserWidth / 2),
-                    })}
-                    {/* ----- Medium end ----- */}
+                    {
+                        userSearchListing.map((item, index) => userLayout(item, index))
+                    }
 
                 </View>
             </ContainerScrollView>
 
-            {/* {selectedUserLayout()} */}
+            {selectedIndex != -1 && selectedUserLayout()}
         </View>
     );
 }
