@@ -10,7 +10,6 @@ import styles from './headerView.style';
 
 export const NavigationHeaderLayout = (props) => {
   const { options } = props;
-
   const itemConst = {
     height: AppConstant.getStatusData().top + AppConstant.getStatusData().headerHeight,
     contentNonHeight: AppConstant.getStatusData().top,
@@ -52,7 +51,7 @@ export const NavigationHeaderLayout = (props) => {
         }
 
         {/* right */}
-        {options.headerRightArr != null && options.headerRightArr.length > 0 &&
+        {options.titleType == null && options.titleType != headerButtonKey.searchPersionInput && options.headerRightArr != null && options.headerRightArr.length > 0 &&
           navigationHeaderButtonLayout(options, props.route, itemConst, options.headerRightArr, true)
         }
 
@@ -62,7 +61,7 @@ export const NavigationHeaderLayout = (props) => {
           // flex: 1,
           position: 'absolute',
           left: itemConst.headerTitleAlign == 'center' ? bodySideSpace : bodySideSpaceL,
-          right: itemConst.headerTitleAlign == 'center' ? bodySideSpace : bodySideSpaceR,
+          right: (options.titleType != null && options.titleType == headerButtonKey.searchPersionInput) ? 0 : (itemConst.headerTitleAlign == 'center' ? bodySideSpace : bodySideSpaceR),
           alignItems: itemConst.headerTitleAlign == 'center' ? 'center' : 'flex-start',
 
           paddingLeft: (options.headerLeftArr != null && options.headerLeftArr.length > 0) ? 10 : 0,

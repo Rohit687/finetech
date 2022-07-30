@@ -333,19 +333,19 @@ export const searchPerson7 = [
     {
         id: Math.random(),
         phone:'(+234) 234 234343',
-        name: 'Adedouin Leke',
+        name: 'Sedouin Leke',
         image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80'
     },
     {
         id: Math.random(),
         phone:'(+234) 234 234343',
-        name: 'Adeboye Usman',
+        name: 'Kpeboye Usman',
         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'
     },
     {
         id: Math.random(),
         phone:'(+234) 234 234343',
-        name: 'Adelaide Uti(son)',
+        name: 'Kpelaide Uti(son)',
         image: 'https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png'
     },
     {

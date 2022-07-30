@@ -7,7 +7,8 @@ import { NavigationHeaderLayout } from './headerView.component';
 export const headerButtonKey = {
   back: 'back',
   menu: 'menu',
-  addMoney: 'addMoney'
+  addMoney: 'addMoney',
+  searchPersionInput: 'searchPersionInput'
 }
 
 export const headerButtonType = {

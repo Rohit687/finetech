@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { ContainerScrollView, ContinueButton, FastImageWithPlaceholder, ViewBezier } from '../../../component';
 import { commonStyle, dimension } from '../../../config';
@@ -6,7 +6,7 @@ import { AppConstant, colors, screensConst } from '../../../constant';
 import { push } from '../../../navigation/navigators/TopNavigatorRef';
 import { getAssetByFilename, ImageSource, LanguageText } from '../../../resource';
 import { jsonCopy, myRandomNonUniqueInts, myRandomUniqueInts } from '../../../utils/string';
-import { searchPerson1, searchPerson2, searchPerson3, searchPerson4, searchPerson5, searchPerson6, searchPerson7 } from './searchPerson.json';
+import { searchPerson7 } from './searchPerson.json';
 import styles from './searchPerson.style';
 
 const extraHeight = 20;
@@ -18,13 +18,37 @@ const oDiameter = (dimension.aspectRatio * 315) / 2; //outer
 const mDiameter = (dimension.aspectRatio * 236) / 2;
 const iDiameter = (dimension.aspectRatio * 149) / 2; //inner
 
-function SearchPersonView() {
+function SearchPersonView({ navigation: { setParams } }) {
     const [userSearchListing, setUserSearchListing] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(-1);
+    const searchTimer = useRef();
 
     useEffect(() => {
 
-        let searchPersonData = jsonCopy(searchPerson1);
+        setParams({
+            onSearch: (search) => {
+                if (searchTimer.current) {
+                    clearTimeout(searchTimer.current);
+                    searchTimer.current = null;
+                }
+                if (search == '') {
+                    setSelectedIndex(-1);
+                    setUserSearchListing([])
+                } else {
+                    searchTimer.current = setTimeout(() => {
+                        let searchResult = searchPerson7.filter(item => item.name.trim().toLowerCase().includes(search.trim().toLowerCase()));
+                        parsing(searchResult);
+                    }, 700);
+                }
+                AppConstant.showConsoleLog('search here:', search);
+            }
+        })
+
+
+    }, [])
+
+    function parsing(searchResult) {
+        let searchPersonData = jsonCopy(searchResult);
         let pageNo = 0;
         let pageSize = 12;
 
@@ -63,7 +87,7 @@ function SearchPersonView() {
         })
 
         setUserSearchListing(jsonCopy(customizeItems));
-    }, [])
+    }
 
     function selectedUserLayout() {
         return (

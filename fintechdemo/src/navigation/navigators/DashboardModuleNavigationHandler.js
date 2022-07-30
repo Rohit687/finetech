@@ -2,13 +2,16 @@
 // https://reactnavigation.org/docs/headers.html
 // https://reactnavigation.org/docs/stack-navigator.html#headerbacktitle
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { headerComponent, headerItems } from '../headerView/header.json';
+import { headerButtonKey, headerComponent, headerItems } from '../headerView/header.json';
 import { LanguageText } from '../../resource/languages/language';
 import { Dashboard } from '@screens';
 import { screensConst } from '../../constant/screensConst';
 import { NewRequest, searchPerson } from '../../screens';
+import { TextInput } from 'react-native';
+import { AppConstant, colors } from '../../constant';
+import { commonStyle } from '../../config';
 
 const MainStack = createNativeStackNavigator();
 
@@ -44,11 +47,38 @@ const DashboardModuleNavigationHandler = (props) => {
         name={screensConst.searchPerson} component={searchPerson}
         options={({ route }) => ({
           title: '',
+          headerTitle: () => <SearchInput onSearch={route?.params?.onSearch} />,
+          // onSearch
+          titleType: headerButtonKey.searchPersionInput,
           headerLeftArr: headerItems.defaultBack
         })}
       />
 
     </MainStack.Navigator>
+  );
+}
+
+function SearchInput({ onSearch = () => { } }) {
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <TextInput
+      style={{
+        width: '95%',
+        height: 50,
+        backgroundColor: colors.secondaryBG,
+        borderWidth: 1,
+        borderColor: isFocused ? colors.searchText : colors.kWhite,
+        paddingHorizontal: commonStyle.space15,
+        color: colors.kWhite,
+        borderRadius: commonStyle.buttonBorder
+      }}
+      placeholder={LanguageText('newRequest').searchFriend}
+      placeholderTextColor={colors.kLightGray}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      onChangeText={(e) => onSearch(e.trim())}
+    />
   );
 }
 

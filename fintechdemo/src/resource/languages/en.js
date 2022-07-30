@@ -34,7 +34,8 @@ export const en = {
     newRequest: {
         title: 'New Request',
         reqFor: 'is requesting for:',
-        notSend: "Don't send"
+        notSend: "Don't send",
+        searchFriend:'Search Your Friend...'
     },
     hello: 'Hello',
     continue:'Continue',
